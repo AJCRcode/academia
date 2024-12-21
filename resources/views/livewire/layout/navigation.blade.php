@@ -24,7 +24,7 @@ new class extends Component
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}" wire:navigate>
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                        <x-application-logo class="block h-20 m-0.5w-auto fill-current text-gray-800 dark:text-gray-200" />
                     </a>
                 </div>
 
@@ -33,6 +33,22 @@ new class extends Component
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('docente.index')" :active="request()->routeIs('docente.index')" wire:navigate>
+                        {{ __('Docentes') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('estudiante.index')" :active="request()->routeIs('estudiante.index')" wire:navigate>
+                        {{ __('Estudiantes') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('materia.index')" :active="request()->routeIs('materia.index')" wire:navigate>
+                        {{ __('Materias') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('examen.index')" :active="request()->routeIs('examen.index')" wire:navigate>
+                        {{ __('Examenes') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('notas.index')" :active="request()->routeIs('notas.index')" wire:navigate>
+                        {{ __('notas') }}
+                    </x-nav-link>
+
                 </div>
             </div>
 
@@ -81,6 +97,21 @@ new class extends Component
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
+                {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
+                {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
+                {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
+                {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
+                {{ __('Dashboard') }}
+            </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
