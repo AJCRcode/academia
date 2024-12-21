@@ -25,8 +25,11 @@ class Materia extends Model
         'updated_at'
     ];
 
-    public function user(){
-        return $this->belongsToMany(Materia::class, 'user_materias');
+    public function docentes(){
+        return $this->belongsToMany(User::class, 'user_materias')
+            ->whereHas('roles', function ($query) {
+                $query->where('name', 'docente');
+            });
     }
 
 }

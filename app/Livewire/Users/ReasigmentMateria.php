@@ -10,8 +10,8 @@ use Livewire\Component;
 class ReasigmentMateria extends Component
 {
     public $user = null;
-    //public $isactive = 'blur-3xl';
-    public $isactive = '';
+    public $isactive = 'blur-3xl';
+    //public $isactive = '';
 
     public function mount(User $user){
         $this->user = $user;

@@ -3,62 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\Models\Materia;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreMateriaRequest;
 use App\Http\Requests\UpdateMateriaRequest;
+use Spatie\Permission\Models\Role;
 
 class MateriaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        return view('materia.index');
+        $materias = Materia::orderBy('id', 'desc')->paginate(10);
+        return view('materia.index', compact('materias'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('materia.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreMateriaRequest $request)
+    public function edit($materia)
     {
-        //
+        return view('materia.edit', compact('materia'));
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Materia $materia)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Materia $materia)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateMateriaRequest $request, Materia $materia)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Materia $materia)
     {
         //

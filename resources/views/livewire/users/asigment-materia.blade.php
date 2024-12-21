@@ -1,6 +1,5 @@
 
 <div class="{{$isactive}}">
-    {{$isactive}}
     <p class="px-2 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
         Asignacion de Materias
     </p>

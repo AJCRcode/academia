@@ -21,7 +21,7 @@ class MateriaFactory extends Factory
             'fecha_inicio' => $this->faker->date(),
             'horario' => $this->faker->time(),
             'fecha_fin' => $this->faker->date(),
-            'gestion' => $this->faker->randomElement(['Prefas', '1er año', '2do año', '3er año', '4to año','5to año']),
+            'gestion' => $this->faker->randomElement(['Prefacultativo', '1er año', '2do año', '3er año', '4to año','5to año']),
         ];
     }
 }
