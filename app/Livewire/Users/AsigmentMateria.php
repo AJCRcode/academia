@@ -10,7 +10,7 @@ use Livewire\Attributes\On;
 class AsigmentMateria extends Component
 {
     public $user = null;
-    public $isactive = 'blur-xl';
+    public $isactive = ' blur-xl';
     //public $isactive = '';
 
     #[On('newUser')]

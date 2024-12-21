@@ -16,7 +16,7 @@ class DocenteController extends Controller
      */
     public function index()
     {
-        $docentes = Role::findByName('docente')->users()->orderBy('id','desc')->paginate(5);
+        $docentes = Role::findByName('docente')->users()->orderBy('id','desc')->paginate(10);
         return view('docente.index', compact('docentes'));
     }
 

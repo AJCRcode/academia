@@ -6,6 +6,8 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use function Termwind\render;
 
 class EstudianteController extends Controller
 {
@@ -15,7 +17,8 @@ class EstudianteController extends Controller
      */
     public function index()
     {
-        return view('estudiente.index');
+        $estudiantes = Role::findByName('estudiante')->users()->orderBy('id','desc')->paginate(10);
+        return view('estudiante.index', compact('estudiantes'));
     }
 
     /**
@@ -23,7 +26,7 @@ class EstudianteController extends Controller
      */
     public function create()
     {
-        //
+        return view('estudiante.create');
     }
 
     /**
@@ -37,7 +40,7 @@ class EstudianteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(User $estudiente)
+    public function show(User $estudiante)
     {
         //
     }
@@ -45,15 +48,15 @@ class EstudianteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $estudiente)
+    public function edit(User $estudiante)
     {
-        //
+        return view('estudiante.edit', compact('estudiante'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateUserRequest $request, User $estudiente)
+    public function update(UpdateUserRequest $request, User $estudiante)
     {
         //
     }
@@ -61,7 +64,7 @@ class EstudianteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $estudiente)
+    public function destroy(User $estudiante)
     {
         //
     }
