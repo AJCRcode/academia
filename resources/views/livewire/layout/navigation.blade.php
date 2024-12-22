@@ -30,15 +30,20 @@ new class extends Component
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('docente.index')" :active="request()->routeIs('docente.index')" wire:navigate>
-                        {{ __('Docentes') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('estudiante.index')" :active="request()->routeIs('estudiante.index')" wire:navigate>
-                        {{ __('Estudiantes') }}
-                    </x-nav-link>
+                    @if(Auth::user()->hasRole('admin'))
+                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
+                            {{ __('Dashboard') }}
+                        </x-nav-link>
+
+                        <x-nav-link :href="route('docente.index')" :active="request()->routeIs('docente.index')" wire:navigate>
+                            {{ __('Docentes') }}
+                        </x-nav-link>
+                    @endif
+                    @if(Auth::user()->hasRole('admin')||Auth::user()->hasRole('docente'))
+                        <x-nav-link :href="route('estudiante.index')" :active="request()->routeIs('estudiante.index')" wire:navigate>
+                            {{ __('Estudiantes') }}
+                        </x-nav-link>
+                    @endif
                     <x-nav-link :href="route('materia.index')" :active="request()->routeIs('materia.index')" wire:navigate>
                         {{ __('Materias') }}
                     </x-nav-link>

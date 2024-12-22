@@ -32,4 +32,20 @@ class Materia extends Model
             });
     }
 
+    public function estudiantes(){
+        return $this->belongsToMany(User::class, 'user_materias')
+            ->whereHas('roles', function ($query) {
+                $query->where('name', 'estudiante');
+            });
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_materias');
+    }
+
+    public function materiales(){
+        return $this->hasMany(Material::class);
+    }
+
 }

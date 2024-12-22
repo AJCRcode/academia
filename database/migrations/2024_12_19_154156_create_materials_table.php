@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('materials', function (Blueprint $table) {
             $table->id();
-            $table->string('uri');
+            $table->string('uri')->nullable();
             $table->foreignId('materia_id')->constrained('materias');
             $table->foreignId('docente_id')->constrained('users');
             $table->string('titulo')->nullable();
