@@ -48,4 +48,12 @@ class Materia extends Model
         return $this->hasMany(Material::class);
     }
 
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
+
+    public function flashcards(){
+        return $this->hasMany(Flashcard::class);
+    }
 }

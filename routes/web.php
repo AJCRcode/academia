@@ -16,6 +16,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('materia', \App\Http\Controllers\MateriaController::class);
     Route::resource('examen', \App\Http\Controllers\MateriaController::class);
     Route::resource('notas', \App\Http\Controllers\MateriaController::class);
+    //Route::resource('questions', PreguntaController::class)->middleware('auth');
+    // Rutas para Flashcards
+
+    Route::resource('flashcard', \App\Http\Controllers\FlashcardController::class);
+
 });
 
 require __DIR__.'/auth.php';

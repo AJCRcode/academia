@@ -13,12 +13,18 @@ return new class extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('form_id');
-            $table->text('question_text');
-            $table->enum('type', ['text', 'radio', 'checkbox']); // Tipos de preguntas
+            $table->unsignedBigInteger('form_id'); // Relación con forms
+            $table->unsignedBigInteger('materia_id'); // Relación con materias
+            $table->string('titulo');
+            $table->text('descripcion')->nullable();
+            $table->enum('tipo', ['text', 'radio', 'checkbox']);
             $table->timestamps();
+        
+            // Relaciones
             $table->foreign('form_id')->references('id')->on('forms')->onDelete('cascade');
+            $table->foreign('materia_id')->references('id')->on('materias')->onDelete('cascade');
         });
+        
     }
 
     /**

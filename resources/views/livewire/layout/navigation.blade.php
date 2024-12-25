@@ -14,7 +14,8 @@ new class extends Component
 
         $this->redirect('/', navigate: true);
     }
-}; ?>
+};
+?>
 
 <nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
@@ -38,7 +39,7 @@ new class extends Component
                             {{ __('Docentes') }}
                         </x-nav-link>
                     @endif
-                    @if(Auth::user()->hasRole('admin')||Auth::user()->hasRole('docente'))
+                    @if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('docente'))
                         <x-nav-link :href="route('estudiante.index')" :active="request()->routeIs('estudiante.index')" wire:navigate>
                             {{ __('Estudiantes') }}
                         </x-nav-link>
@@ -50,9 +51,13 @@ new class extends Component
                         {{ __('Examenes') }}
                     </x-nav-link>
                     <x-nav-link :href="route('notas.index')" :active="request()->routeIs('notas.index')" wire:navigate>
-                        {{ __('notas') }}
+                        {{ __('Notas') }}
                     </x-nav-link>
-
+                    {{--@if(Auth::user()->hasRole('estudiante') || Auth::user()->hasRole('docente'))--}}
+                        <x-nav-link :href="route('flashcard.index')" :active="request()->routeIs('flashcard.index')" wire:navigate>
+                            {{ __('Flash Cards') }}
+                        </x-nav-link>
+                    {{--@endif--}}
                 </div>
             </div>
 
@@ -98,18 +103,23 @@ new class extends Component
         </div>
     </div>
 
+{{--    <!-- Main Content: Flashcards -->--}}
+{{--    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-8">--}}
+{{--        <h1 class="text-2xl font-semibold text-gray-900">{{ __('Flashcards') }}</h1>--}}
+
+{{--        <div class="mt-6">--}}
+{{--            @foreach ($flashcards as $flashcard)--}}
+{{--                <div class="bg-white shadow rounded-lg p-6 mb-4">--}}
+{{--                    <h2 class="text-xl font-medium text-gray-800">{{ $flashcard->question }}</h2>--}}
+{{--                    <p class="mt-2 text-gray-600">{{ $flashcard->answer }}</p>--}}
+{{--                </div>--}}
+{{--            @endforeach--}}
+{{--        </div>--}}
+{{--       </div>--}}
+
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>

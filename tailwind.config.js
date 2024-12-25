@@ -24,6 +24,9 @@ export default {
                 'lg': '3px 3px 6px rgba(255, 255, 255, 0.5)',
                 'xl': '4px 4px 8px rgba(255, 255, 255, 0.5)',
             },
+            boxShadow: {
+                'inner-custom': 'inset 0 2px 4px rgba(0, 0, 0, 0.6)',  // Ajusta los valores según tus necesidades
+            }
         },
     },
 
