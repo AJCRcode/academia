@@ -21,6 +21,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::resource('flashcard', \App\Http\Controllers\FlashcardController::class);
 
+    Route::resource('examen',\App\Http\Controllers\ExamenController::class);
+
 });
 
 require __DIR__.'/auth.php';

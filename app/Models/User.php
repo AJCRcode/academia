@@ -38,4 +38,14 @@ class User extends Authenticatable
     public function materiales(){
         return $this->hasMany(Materia::class, 'docente_id', 'id');
     }
+
+    public function formularios()
+    {
+        return $this->hasMany(Form::class , 'teacher_id', 'id');
+    }
+
+    public function respuestas()
+    {
+        return $this->hasMany(Answer::class , 'student_id', 'id');
+    }
 }

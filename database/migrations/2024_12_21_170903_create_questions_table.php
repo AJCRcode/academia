@@ -16,15 +16,14 @@ return new class extends Migration
             $table->unsignedBigInteger('form_id'); // Relación con forms
             $table->unsignedBigInteger('materia_id'); // Relación con materias
             $table->string('titulo');
-            $table->text('descripcion')->nullable();
-            $table->enum('tipo', ['text', 'radio', 'checkbox']);
+            $table->enum('tipo', ['text', 'radio', 'checkbox'])->default('radio');
             $table->timestamps();
-        
+
             // Relaciones
             $table->foreign('form_id')->references('id')->on('forms')->onDelete('cascade');
             $table->foreign('materia_id')->references('id')->on('materias')->onDelete('cascade');
         });
-        
+
     }
 
     /**
