@@ -39,13 +39,18 @@ class User extends Authenticatable
         return $this->hasMany(Materia::class, 'docente_id', 'id');
     }
 
-    public function formularios()
-    {
-        return $this->hasMany(Form::class , 'teacher_id', 'id');
-    }
-
     public function respuestas()
     {
         return $this->hasMany(Answer::class , 'student_id', 'id');
+    }
+
+    public function formulariosCreados()
+    {
+        return $this->hasMany(Form::class, 'teacher_id', 'id');
+    }
+
+    public function formulariosAsignados()
+    {
+        return $this->belongsToMany(Form::class, 'exam_assignments', 'student_id', 'form_id');
     }
 }

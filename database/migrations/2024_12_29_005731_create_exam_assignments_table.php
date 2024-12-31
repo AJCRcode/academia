@@ -11,17 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('questions', function (Blueprint $table) {
+        Schema::create('exam_assignments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('form_id'); // Relación con forms
-            $table->unsignedBigInteger('materia_id')->nullable(); // Relación con materias
-            $table->string('titulo');
-            $table->enum('tipo', ['text', 'radio', 'checkbox'])->default('radio');
+            $table->unsignedBigInteger('form_id'); // Relación con el examen
+            $table->unsignedBigInteger('student_id'); // Relación con el estudiante
             $table->timestamps();
 
             // Relaciones
             $table->foreign('form_id')->references('id')->on('forms')->onDelete('cascade');
-            $table->foreign('materia_id')->references('id')->on('materias')->onDelete('cascade')->nullable();
+            $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('questions');
+        Schema::dropIfExists('exam_assignments');
     }
 };

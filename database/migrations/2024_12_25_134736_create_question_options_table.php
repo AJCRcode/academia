@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('question_id'); // Relación con questions
             $table->string('opcion'); // Texto de la opción
             $table->boolean('es_correcta')->default(false); // Si es la opción correcta
+
             $table->timestamps();
 
             // Relaciones

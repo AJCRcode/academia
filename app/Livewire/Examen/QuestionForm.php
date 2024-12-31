@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Examen;
 
+use App\Models\Form;
 use App\Models\Materia;
 use App\Models\Question;
 use Illuminate\Support\Facades\Auth;
@@ -10,11 +11,10 @@ use function Symfony\Component\Translation\t;
 
 class QuestionForm extends Component
 {
-    public $materia_id;
-    public $materias;
-
-    public $question;
-    public $titulo, $descripcion, $tipo, $opciones = [], $respuesta_correcta;
+    public $materia_id,$materias;
+    public $isalone = true ;
+    public $issubmit = false;
+    public $title, $description;
 
     public function mount()
     {
@@ -29,31 +29,31 @@ class QuestionForm extends Component
         $this->materia_id = $value;
     }
 
-    public function save()
+    public function next()
     {
         $data = $this->validate([
-            'titulo' => 'required|string|max:255',
-            'descripcion' => 'nullable|string',
-            'tipo' => 'required|in:radio,checkbox',
-            'opciones' => 'required|array|min:5|max:5',
-            'respuesta_correcta' => 'required|string|in:A,B,C,D,E',
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
         ]);
 
-        $data['materia_id'] = $this->materia->id;
+        $data['teacher_id'] = Auth::id();
+        $data['materia_id'] = $this->isalone ? $this->materia_id : null;
 
-        if ($this->question) {
-            $this->question->update($data);
-            session()->flash('message', 'Pregunta actualizada con éxito.');
-        } else {
-            Question::create($data);
-            session()->flash('message', 'Pregunta creada con éxito.');
+        $this->issubmit = true;
+
+        $formulario = Form::create($data);
+
+        if ($this->isalone){
+            $this->dispatch('newFormAlone', ['form_id' => $formulario->id, 'materia_id' => $this->materia_id]);
+        }else{
+            $this->dispatch( 'newFormMaterias', ['form_id' => $formulario->id]);
         }
 
-        return redirect()->route('materia.questions.index', $this->materia->id);
     }
 
     public function render()
     {
         return view('livewire.examen.question-form');
     }
+
 }

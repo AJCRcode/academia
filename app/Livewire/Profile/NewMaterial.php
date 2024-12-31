@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Profile;
 
+use App\Models\Materia;
 use App\Models\Material;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Rule;
@@ -22,6 +23,11 @@ class NewMaterial extends Component
     #[Validate('required|file|mimes:jpeg,jpg,png,pdf,doc,docx|max:2048')]
     public $uri;
 
+    public $materias;
+    public function mount()
+    {
+        $this->materias = Auth::user()->hasRole('admin') ? Materia::all():Auth::user()->materias ;
+    }
     public function render()
     {
         return view('livewire.profile.new-material');

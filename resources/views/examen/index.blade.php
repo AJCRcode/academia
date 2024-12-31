@@ -1,26 +1,24 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Gestión de Exámenes') }}
+            @if(Auth::user()->hasRole('admin'))
+                {{ __('Administración de Exámenes') }}
+            @elseif(Auth::user()->hasRole('docente'))
+                {{ __('Mis Exámenes') }}
+            @else
+                {{ __('Exámenes') }}
+            @endif
         </h2>
     </x-slot>
 
-    <div class="grid grid-cols-2 mx-32">
+    @if(Auth::user()->hasRole('estudiante'))
         <x-card>
-            <livewire:examen.question-form/>
+            <livewire:examen.view-exams/>
         </x-card>
-
+    @else
         <x-card>
-            <livewire:examen.answer-questions/>
+            <livewire:examen.manage-exams/>
         </x-card>
-
-        <x-card>
-            <livewire:examen.results/>
-        </x-card>
-
-        <x-card>
-            <livewire:examen.question-list/>
-        </x-card>
-    </div>
+    @endif
 
 </x-app-layout>

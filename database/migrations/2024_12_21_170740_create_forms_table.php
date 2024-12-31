@@ -15,9 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description')->nullable();
-            $table->unsignedBigInteger('teacher_id'); // Relación con docentes
+            $table->unsignedBigInteger('teacher_id');
+            $table->unsignedBigInteger('materia_id')->nullable();
             $table->timestamps();
             $table->foreign('teacher_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('materia_id')->references('id')->on('materias')->onDelete('cascade');
         });
     }
 

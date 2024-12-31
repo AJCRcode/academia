@@ -11,10 +11,22 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+        <style>
+            /* En tu archivo CSS principal */
+            .no-scrollbar::-webkit-scrollbar {
+                display: none;
+            }
+
+            .no-scrollbar {
+                -ms-overflow-style: none;  /* IE y Edge */
+                scrollbar-width: none;  /* Firefox */
+            }
+        </style>
+
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased  dark:bg-sky-900">
+    <body class="font-sans antialiased dark dark:bg-sky-900">
         <div class="min-h-screen bg-sky-800/30 dark:bg-gray-900/70 bg-[url('http://academia_nk-.test/images/patron_sin_fondo.png')] dark:bg-blend-difference bg-blend-multiply" style="background-size: 300px 300px;">
             <livewire:layout.navigation />
 

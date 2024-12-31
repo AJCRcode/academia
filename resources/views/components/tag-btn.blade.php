@@ -18,8 +18,7 @@
 @endphp
 
 <span class="inline-flex items-center px-2 py-1 me-2 text-s rounded-lg font-medium {{$selectedColor[0]}}">
-    {{$slot}}
-    <button {{ $attributes->merge(['class' => 'ms-auto inline-flex items-center p-1 ms-2 text-sm bg-transparent rounded-sm '.$selectedColor[1]]) }}>
+    <button {{ $attributes->merge(['class' => 'inline-flex items-center p-1 text-sm bg-transparent rounded-sm '.$selectedColor[1]]) }}>
 
         @if($ischeck)
             <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -33,4 +32,5 @@
 
         <span class="sr-only">Remove badge</span>
     </button>
+    {{$slot}}
 </span>

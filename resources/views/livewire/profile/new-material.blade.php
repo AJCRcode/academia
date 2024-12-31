@@ -27,7 +27,7 @@
             <x-select-input wire:model="materia" id="materia" name="materia" type="text" class="mt-1 block w-full" autocomplete="materia" >
                 <option selected>-----------------</option>
 
-                @foreach(Auth::user()->materias as $materia)
+                @foreach($materias as $materia)
                     <option value="{{$materia->id}}">{{$materia->nombre}}</option>
                     {{$materia->nombre}}
                 @endforeach
