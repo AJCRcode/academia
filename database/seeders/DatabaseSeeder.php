@@ -20,24 +20,24 @@ class DatabaseSeeder extends Seeder
             MateriaSeeder::class,
         ]);
 
-        $docentes =User::factory(10)->create();
-        foreach ($docentes as $docente) {
-            $docente->assignRole('docente');
-            $docente->materias()->attach(Materia::all()->random());
-            $docente->materias()->attach(Materia::all()->random());
-        }
-
-        $estudiantes = User::factory(10)->create();
-
-        foreach ($estudiantes as $estudiante) {
-            $estudiante->assignRole('estudiante');
-            $estudiante->materias()->attach(Materia::all()->random());
-            $estudiante->materias()->attach(Materia::all()->random());
-            $estudiante->materias()->attach(Materia::all()->random());
-            $estudiante->materias()->attach(Materia::all()->random());
-            $estudiante->materias()->attach(Materia::all()->random());
-            $estudiante->materias()->attach(Materia::all()->random());
-        }
+//        $docentes =User::factory(10)->create();
+//        foreach ($docentes as $docente) {
+//            $docente->assignRole('docente');
+//            $docente->materias()->attach(Materia::all()->random());
+//            $docente->materias()->attach(Materia::all()->random());
+//        }
+//
+//        $estudiantes = User::factory(10)->create();
+//
+//        foreach ($estudiantes as $estudiante) {
+//            $estudiante->assignRole('estudiante');
+//            $estudiante->materias()->attach(Materia::all()->random());
+//            $estudiante->materias()->attach(Materia::all()->random());
+//            $estudiante->materias()->attach(Materia::all()->random());
+//            $estudiante->materias()->attach(Materia::all()->random());
+//            $estudiante->materias()->attach(Materia::all()->random());
+//            $estudiante->materias()->attach(Materia::all()->random());
+//        }
 
         $admin=User::factory()->create([
           'name' => 'admin ',
