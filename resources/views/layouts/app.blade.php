@@ -27,7 +27,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased dark:bg-sky-900">
-        <div class="min-h-screen bg-sky-800/30 dark:bg-gray-900/70 bg-[url('http://academia_nk-.test/images/patron_sin_fondo.png')] dark:bg-blend-difference bg-blend-multiply" style="background-size: 300px 300px;">
+        <div class="min-h-screen bg-sky-800/30 dark:bg-gray-900/70 bg-[url('https://amarmedi.amarmedi.com/images/patron_sin_fondo.png')] dark:bg-blend-difference bg-blend-multiply" style="background-size: 300px 300px;">
             <livewire:layout.navigation />
 
             <!-- Page Heading -->

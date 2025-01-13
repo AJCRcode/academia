@@ -50,9 +50,9 @@ new class extends Component
                     <x-nav-link :href="route('examen.index')" :active="request()->routeIs('examen.index')" wire:navigate>
                         {{ __('Examenes') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('notas.index')" :active="request()->routeIs('notas.index')" wire:navigate>
-                        {{ __('Notas') }}
-                    </x-nav-link>
+{{--                    <x-nav-link :href="route('notas.index')" :active="request()->routeIs('notas.index')" wire:navigate>--}}
+{{--                        {{ __('Notas') }}--}}
+{{--                    </x-nav-link>--}}
                     {{--@if(Auth::user()->hasRole('estudiante') || Auth::user()->hasRole('docente'))--}}
                         <x-nav-link :href="route('flashcard.index')" :active="request()->routeIs('flashcard.index')" wire:navigate>
                             {{ __('Flash Cards') }}

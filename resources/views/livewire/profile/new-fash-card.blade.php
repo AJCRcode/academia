@@ -24,7 +24,7 @@
 
         <div>
             <x-input-label for="materia" :value="__('Materia')" />
-            <x-select-input wire:model="materia" id="materia" name="materia" type="text" class="mt-1 block w-full" autocomplete="materia" >
+            <x-select-input wire:model="materia" id="materiaflash" name="materia" type="text" class="mt-1 block w-full" autocomplete="materia" >
                 <option selected>-----------------</option>
 
                 @foreach($materias as $materia)

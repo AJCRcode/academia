@@ -1,4 +1,4 @@
-@props(['color' => 1, 'ischeck' => true])
+@props(['color' => 1, 'ischeck' => true, 'isicon' => true])
 @php
     $colors = [
         1 => ['bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300','text-blue-400 hover:bg-blue-200 hover:text-blue-900 dark:hover:bg-blue-800 dark:hover:text-blue-300'],
@@ -19,18 +19,24 @@
 
 <span class="inline-flex items-center px-2 py-1 me-2 text-s rounded-lg font-medium {{$selectedColor[0]}}">
     <button {{ $attributes->merge(['class' => 'inline-flex items-center p-1 text-sm bg-transparent rounded-sm '.$selectedColor[1]]) }}>
+        @if($isicon)
+            @if($ischeck)
+                <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="m15 9-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                </svg>
+            @else
+                <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 7.757v8.486M7.757 12h8.486M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                </svg>
+            @endif
 
-        @if($ischeck)
-            <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="m15 9-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-            </svg>
+            <span class="sr-only">Remove badge</span>
         @else
-            <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 7.757v8.486M7.757 12h8.486M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-            </svg>
+            {{$slot}}
         @endif
 
-        <span class="sr-only">Remove badge</span>
     </button>
-    {{$slot}}
+    @if($isicon)
+        {{$slot}}
+    @endif
 </span>

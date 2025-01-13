@@ -2433,20 +2433,20 @@ input:checked + .toggle-bg {
   --tw-bg-opacity: 0.5;
 }
 
-.bg-\[url\(\'http\:\/\/academia_nk-\.test\/images\/aula\.png\'\)\] {
-  background-image: url('http://academia_nk-.test/images/aula.png');
+.bg-\[url\(\'https\:\/\/amarmedi\.amarmedi\.com\/images\/aula\.png\'\)\] {
+  background-image: url('https://amarmedi.amarmedi.com/images/aula.png');
 }
 
-.bg-\[url\(\'http\:\/\/academia_nk-\.test\/images\/fondo\.png\'\)\] {
-  background-image: url('http://academia_nk-.test/images/fondo.png');
+.bg-\[url\(\'https\:\/\/amarmedi\.amarmedi\.com\/images\/fondo\.png\'\)\] {
+  background-image: url('https://amarmedi.amarmedi.com/images/fondo.png');
 }
 
-.bg-\[url\(\'http\:\/\/academia_nk-\.test\/images\/patron_medi\.jpeg\'\)\] {
-  background-image: url('http://academia_nk-.test/images/patron_medi.jpeg');
+.bg-\[url\(\'https\:\/\/amarmedi\.amarmedi\.com\/images\/patron_medi\.jpeg\'\)\] {
+  background-image: url('https://amarmedi.amarmedi.com/images/patron_medi.jpeg');
 }
 
-.bg-\[url\(\'http\:\/\/academia_nk-\.test\/images\/patron_sin_fondo\.png\'\)\] {
-  background-image: url('http://academia_nk-.test/images/patron_sin_fondo.png');
+.bg-\[url\(\'https\:\/\/amarmedi\.amarmedi\.com\/images\/patron_sin_fondo\.png\'\)\] {
+  background-image: url('https://amarmedi.amarmedi.com/images/patron_sin_fondo.png');
 }
 
 .bg-cover {

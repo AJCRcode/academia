@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Academia </title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -14,7 +14,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="antialiased font-sans">
-        <section class="animate__animated animate__bounce bg-center bg-no-repeat bg-[url('http://academia_nk-.test/images/fondo.png')] bg-[#4D86A3] bg-cover bg-blend-multiply">
+        <section class="animate__animated animate__bounce bg-center bg-no-repeat bg-[url('https://amarmedi.amarmedi.com/images/fondo.png')] bg-[#4D86A3] bg-cover bg-blend-multiply">
             <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-24">
 
                 <img class="h-auto w-2/6 mx-auto rounded-lg shadow-emerald-900" src="{{asset('images/academia.png')}}" alt="image description">
@@ -26,7 +26,7 @@
             </div>
         </section>
 
-        <section class="px-60 bg-[url('http://academia_nk-.test/images/patron_medi.jpeg')]">
+        <section class="px-60 bg-[url('https://amarmedi.amarmedi.com/images/patron_medi.jpeg')]">
 
             <div class=" mx-auto max-w-screen-xl lg:py-16">
                 <x-principalcard iscategory="{{true}}">

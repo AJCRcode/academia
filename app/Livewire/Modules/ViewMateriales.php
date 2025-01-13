@@ -10,10 +10,12 @@ use Livewire\Component;
 class ViewMateriales extends Component
 {
     public $materiaMain = null;
+    public $materias = null;
 
     public function mount()
     {
-        $this->materiaMain = Auth::user()->materias()->first();
+        $this->materias = Auth::user()->hasrole('admin') ? Materia::all() : Auth::user()->materias;
+        $this->materiaMain = Auth::user()->hasrole('admin') ? Materia::first() : Auth::user()->materias->first();
     }
 
     public function render()
@@ -30,20 +32,22 @@ class ViewMateriales extends Component
     {
         try {
             $filePath = storage_path('app/public/'.$material->uri);
-            // Verificar si el archivo existe
+
             if (!file_exists($filePath)) {
-                dd("El archivo $filePath no existe");
                 return response()->json(['error' => 'Archivo no encontrado.'], 404);
             }
 
-            // Descargar el archivo
             return response()->download($filePath);
 
         } catch (\Exception $e) {
-            // Manejo de excepciones
             return response()->json(['error' => 'Error al descargar el archivo.'], 500);
         }
     }
 
-
+    public function isImage($filePath)
+    {
+        $extension = pathinfo($filePath, PATHINFO_EXTENSION);
+        $imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'];
+        return in_array(strtolower($extension), $imageExtensions);
+    }
 }
