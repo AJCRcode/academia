@@ -14,7 +14,7 @@
                 No hay Docentes asignados
             </span>
         @else
-            <div class="grid grid-cols-3 gap-4 m-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 m-6">
                 @foreach($docentes_list as $docente)
                     <x-tag-btn :color="$docente->id" :ischeck="true" wire:click="removeDocente({{$docente->id}})">
                         {{$docente->name}}
@@ -25,7 +25,7 @@
             <p class="px-2 m-2 text-lg text-gray-800 dark:text-gray-200 leading-tight">
                 Docentes Disponibles
             </p>
-            <div class="grid grid-cols-3 gap-2 m-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-2 m-4">
 
                 @foreach($docentes_not as $docente)
                     <x-tag-btn :color="$docente->id" :ischeck="false" wire:click="addDocente({{$docente->id}})">

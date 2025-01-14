@@ -44,7 +44,7 @@
                     @slot('titulo') Construyendo un Futuro Brillante para Nuestros Estudiantes @endslot
                     @slot('contenido') Diseñamos esta plataforma web con el objetivo de facilitar el acceso a nuestra comunidad y nuestras instalaciones, ofreciendo herramientas y recursos para impulsar la superación de estudiantes en las áreas de medicina, odontología y residencias. Queremos invitarte a ser parte de este proyecto dedicado a tu éxito académico y profesional. No lo dudes más, únete a nosotros y construyamos juntos tu futuro. @endslot
                 </x-principalcard>
-                <div class="grid md:grid-cols-2 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <x-principalcard >
                         @slot('titulo') Academia <br>NK-AMAR MEDI @endslot
                         @slot('contenido') Eduardo Cabba Rojas fundador visionario de la Academia NK, un hombre que decidió dejar las reglas a un lado para crear las suyas . Con determinación y ingenio , transformó su sueño en una realidad. Porque, después de todo, ¿quién necesita un manual cuando puedes escribir el tuyo? @endslot

@@ -5,7 +5,7 @@
         </x-tag-btn>
     @endforeach
 
-    <div class="grid grid-cols-4 gap-6 mt-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-6">
         @forelse ($materiaMain->materiales as $material)
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-[0px_0px_34px_10px_rgba(0,0,0,0.5)] dark:bg-gray-800 dark:border-gray-700">
                     <a href="#">

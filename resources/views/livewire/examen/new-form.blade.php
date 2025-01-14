@@ -14,7 +14,7 @@
 
 
     <form wire:submit.prevent="save">
-        <div class="grid grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
             <div class="bg-white dark:bg-gray-800 mb-1 shadow-xl border-2 sm:rounded-lg">
                 <div class="px-6 pt-6 text-gray-900 dark:text-gray-100">

@@ -37,7 +37,7 @@
             <hr class="w-80 h-1 my-3 bg-gray-200 border-0 rounded dark:bg-gray-700">
             <p>{{ $form->description }}</p>
 
-            <div class="grid grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 @foreach ($form->questions as $question)
                     <div class="bg-white dark:bg-gray-800 mb-4 shadow-xl border-2 sm:rounded-lg">
                         <div class="px-6 pt-6 text-gray-900 dark:text-gray-100">

@@ -18,7 +18,7 @@
 
         </x-card>
     </div>
-    <div class="grid grid-cols-3 mx-20 pb-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 mx-20 pb-16">
         <x-card>
             <p class="text-gray-900 dark:text-white text-3xl md:text-5xl font-extrabold my-auto">
                 Materias

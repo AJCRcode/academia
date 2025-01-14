@@ -13,10 +13,12 @@
         </select>
     </div>
 
-    <div class="mt-6 grid grid-cols-4 gap-4">
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-4 gap-4">
         @if($flashcards && $flashcards->count())
             @foreach ($flashcards as $flashcard)
-                <livewire:card.card :key="$flashcard->id" :pregunta="$flashcard->question" :respuesta="$flashcard->answer" />
+                <livewire:card.card
+                    :key="$flashcard->id"
+                    :flashcard="$flashcard" />
             @endforeach
         @else
             <span class="bg-red-100 text-red-800 text-2xl col-span-4 py-4 font-medium px-10 rounded-full dark:bg-red-900 dark:text-red-300">

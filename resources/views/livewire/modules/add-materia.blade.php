@@ -10,7 +10,7 @@
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
-        <div class="gap-5 grid grid-cols-3">
+        <div class="gap-5 grid grid-cols-1 md:grid-cols-3">
             <!-- Fecha de Inicio -->
             <div class="mt-4">
                 <x-input-label for="fecha_inicio" :value="__('Fecha de Inicio')" />

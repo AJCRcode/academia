@@ -15,7 +15,7 @@
                 No hay Materias asignadas
             </span>
         @else
-            <div class="grid grid-cols-3 gap-4 m-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 m-6">
                 @foreach($materias_user as $materia)
                     <x-tag-btn :color="$materia->id" :ischeck="true" wire:click="removeMateria({{$materia->id}})">
                         {{$materia->nombre}}
@@ -26,7 +26,7 @@
         <p class="px-2 m-2 text-lg text-gray-800 dark:text-gray-200 leading-tight">
             Materias Disponibles
         </p>
-        <div class="grid grid-cols-3 gap-2 m-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-2 m-4">
 
             @foreach($materias_not as $materia)
                 <x-tag-btn :color="$materia->id" :ischeck="false" wire:click="addMateria({{$materia->id}})">
