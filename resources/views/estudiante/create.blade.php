@@ -7,7 +7,7 @@
         </div>
     </x-slot>
     <x-card>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div class="relative overflow-x-auto shadow-2xl p-2 sm:rounded-lg">
                 <livewire:pages.auth.new-user-est />
             </div>
