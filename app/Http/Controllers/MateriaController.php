@@ -3,24 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Materia;
-use Illuminate\Http\Request;
-use App\Http\Requests\StoreMateriaRequest;
-use App\Http\Requests\UpdateMateriaRequest;
 use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Models\Role;
 
 class MateriaController extends Controller
 {
     public function index()
     {
-        $materias = Materia::orderBy('id', 'desc')->paginate(10);
-        if (Auth::user()->hasRole('admin')) {
-            return view('materia.index', compact('materias'));
-        } elseif (Auth::user()->hasRole('docente')) {
-            return view('materia.index', compact('materias'));
-        } else {
-            return view('materia.show');
-        }
+        $materias = Materia::query()->orderBy('id', 'desc')->activa()->paginate(10);
+        $view = Auth::user()->hasRole('admin') || Auth::user()->hasRole('docente') ? 'materia.index' : 'materia.show';
+
+        return view($view, compact('materias'));
     }
 
     public function create()
@@ -36,8 +28,16 @@ class MateriaController extends Controller
     {
         return view('materia.show', compact('materia'));
     }
-    public function destroy(Materia $materia)
+    public function destroy(Materia $materium)
     {
-        //
+        $materium->estado = false;
+        if($materium->save()) {
+            flash()->success('Eliminado Correctamente');
+            return back();
+        } else {
+            toastr()->error('Hubo un Error al eliminar');
+            return back();
+        }
     }
+
 }

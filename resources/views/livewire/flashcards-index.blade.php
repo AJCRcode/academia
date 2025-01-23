@@ -1,5 +1,4 @@
 <div>
-    {{dd($flashcards)}}
     <h1 class="text-2xl font-semibold text-gray-900">{{ __('Flashcards para: ') }} {{ $materia->nombre }}</h1>
 
     <div class="mt-6">

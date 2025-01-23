@@ -23,7 +23,7 @@ class CardsView extends Component
             ? Materia::all()
             : Auth::user()->materias;
 
-        $this->materia_id = $this->materias->first()?->id; // Seleccionar la primera materia
+        $this->materia_id = $this->materias->first()?->id;
         $this->setFlashcards();
     }
 

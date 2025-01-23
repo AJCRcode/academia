@@ -1,1 +1,1 @@
-<img src="{{asset('images/academia.png')}}" alt="logo" {{ $attributes }}>
+F<img src="{{asset('images/academia.png')}}" alt="logo" {{ $attributes }}>

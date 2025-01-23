@@ -4,6 +4,7 @@
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                 {{ __('Materias') }}
             </h2>
+
             <div class="flex flex-row ml-auto">
                 @if(Auth::user()->materias->first() != null || Auth::user()->hasRole('admin'))
                     <x-button_basic class="mr-6" href="{{route('materia.show',1)}}">
@@ -57,13 +58,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($materias as $materia)
+                @forelse($materias as $materia)
                     <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                         <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                             <img class="w-10 h-10 rounded-full" src="https://cdn-icons-png.freepik.com/256/1819/1819411.png?semt=ais_hybrid" alt="Jese image">
                             <div class="ps-3">
                                 <div class="text-base font-semibold">{{$materia->nombre}}</div>
-    {{--                            <div class="font-normal text-gray-500">neil.sims@flowbite.com</div>--}}
                             </div>
                         </th>
 
@@ -85,7 +85,7 @@
                                 <x-etiquetas :color="$docente->id">{{$docente->name}}</x-etiquetas>
                             @endforeach
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 flex flex-row justify-center items-center gap-3">
                             <x-button_basic href="{{route('materia.edit',$materia->id)}}">
                                 @slot('contenido')
                                     <svg class="w-6 h-6 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
@@ -94,9 +94,25 @@
                                     </svg>
                                 @endslot
                             </x-button_basic>
+                            <form action="{{ route('materia.destroy', $materia->id) }}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="w-auto h-auto inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-900">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 " fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
+                                    </svg>
+                                </button>
+                            </form>
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <span class="bg-red-100 col-span-4 my-4 flex flex-row text-red-800 w-4/5 text-lg ms-6 font-medium me-2 px-2.5 py-0.5 rounded-xl  dark:bg-red-900 dark:text-red-300">
+                        <svg class="w-7" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                        </svg>
+                        No hay Materias disponibles
+                    </span>
+                @endforelse
                 </tbody>
             </table>
         </div>

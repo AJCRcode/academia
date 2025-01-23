@@ -25,14 +25,16 @@ class Materia extends Model
         'updated_at'
     ];
 
-    public function docentes(){
+    public function docentes()
+    {
         return $this->belongsToMany(User::class, 'user_materias')
             ->whereHas('roles', function ($query) {
                 $query->where('name', 'docente');
             });
     }
 
-    public function estudiantes(){
+    public function estudiantes()
+    {
         return $this->belongsToMany(User::class, 'user_materias')
             ->whereHas('roles', function ($query) {
                 $query->where('name', 'estudiante');
@@ -44,7 +46,8 @@ class Materia extends Model
         return $this->belongsToMany(User::class, 'user_materias');
     }
 
-    public function materiales(){
+    public function materiales()
+    {
         return $this->hasMany(Material::class);
     }
 
@@ -53,7 +56,21 @@ class Materia extends Model
         return $this->hasMany(Question::class);
     }
 
-    public function flashcards(){
+    public function flashcards()
+    {
         return $this->hasMany(Flashcard::class);
+    }
+
+    public function scopeActiva($query)
+    {
+        return $query->where('estado', 1);
+    }
+
+
+    public static function all($columns = ['*'])
+    {
+        // Personaliza la consulta a la base de datos
+        return static::query()->activa()->orderBy('id', 'desc')->get($columns);
+
     }
 }

@@ -20,7 +20,7 @@ class Question extends Model
 
     public function materia()
     {
-        return $this->belongsTo(Materia::class);
+        return $this->belongsTo(Materia::class)->activa();
     }
 
     public function answers()

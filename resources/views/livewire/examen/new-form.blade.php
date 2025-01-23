@@ -4,7 +4,7 @@
     </div>
 
     <div class="flex flex-row my-4 items-center">
-        <x-primary-button wire:click="toggleAlone">
+        <x-primary-button x-on:click="$wire.toggleAlone">
             {{ $isalone ? 'Varias Materias' : 'Una Sola Materia' }}
         </x-primary-button>
         <span class="ml-auto bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-indigo-400 border border-indigo-400">

@@ -32,8 +32,9 @@ class User extends Authenticatable
     }
 
     public function materias(){
-        return $this->belongsToMany(Materia::class, 'user_materias');
+        return $this->belongsToMany(Materia::class, 'user_materias')->activa();
     }
+
 
     public function materiales(){
         return $this->hasMany(Materia::class, 'docente_id', 'id');
@@ -51,6 +52,6 @@ class User extends Authenticatable
 
     public function formulariosAsignados()
     {
-        return $this->belongsToMany(Form::class, 'exam_assignments', 'student_id', 'form_id');
+        return $this->belongsToMany(Form::class, 'exam_assignments', 'student_id', 'form_id')->activa();
     }
 }

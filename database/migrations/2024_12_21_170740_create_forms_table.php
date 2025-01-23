@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->unsignedBigInteger('teacher_id');
+            $table->boolean('estado')->default(1);
             $table->unsignedBigInteger('materia_id')->nullable();
             $table->timestamps();
             $table->foreign('teacher_id')->references('id')->on('users')->onDelete('cascade');

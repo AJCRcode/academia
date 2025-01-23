@@ -22,7 +22,7 @@ class Material extends Model
     ];
 
     public function materia(){
-        return $this->belongsTo(Materia::class,'materia_id');
+        return $this->belongsTo(Materia::class,'materia_id')->activa();
     }
     public function docente(){
         return $this->belongsTo(User::class);

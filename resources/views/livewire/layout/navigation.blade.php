@@ -47,7 +47,7 @@ new class extends Component
                     <x-nav-link :href="route('materia.index')" :active="request()->routeIs('materia.index')" wire:navigate>
                         {{ __('Materias') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('examen.index')" :active="request()->routeIs('examen.index')" wire:navigate>
+                    <x-nav-link :href="route('examen.index')" :active="request()->routeIs('examen.index')" >
                         {{ __('Examenes') }}
                     </x-nav-link>
 
@@ -122,7 +122,7 @@ new class extends Component
                 {{ __('Materias') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('examen.index')" :active="request()->routeIs('examen.index')" wire:navigate>
+            <x-responsive-nav-link :href="route('examen.index')" :active="request()->routeIs('examen.index')">
                 {{ __('Examenes') }}
             </x-responsive-nav-link>
 

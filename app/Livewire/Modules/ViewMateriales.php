@@ -9,23 +9,20 @@ use Livewire\Component;
 
 class ViewMateriales extends Component
 {
-    public $materiaMain = null;
+    public $materiales = null;
     public $materias = null;
+    public $materia_id = null;
 
     public function mount()
     {
         $this->materias = Auth::user()->hasrole('admin') ? Materia::all() : Auth::user()->materias;
-        $this->materiaMain = Auth::user()->hasrole('admin') ? Materia::first() : Auth::user()->materias->first();
+        $this->materia_id = Auth::user()->hasrole('admin') ? Materia::first()->id : Auth::user()->materias->first()->id;
     }
 
     public function render()
     {
+        $this->materiales = Material::where('materia_id',$this->materia_id)->get();
         return view('livewire.modules.view-materiales');
-    }
-
-    public function changeMateria(Materia $materia)
-    {
-        $this->materiaMain = $materia;
     }
 
     public function descargarMateriales(Material $material)

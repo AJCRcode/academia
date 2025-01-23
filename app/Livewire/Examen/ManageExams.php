@@ -17,7 +17,8 @@ class ManageExams extends Component
 
     public function mount()
     {
-        $this->exams = Form::with('questions')->get(); // Carga todos los exámenes
+
+        $this->exams = Form::with('questions')->activa()->get(); // Carga todos los exámenes
 
         // Obtén estudiantes con rol de estudiante
         $this->students = User::role('estudiante')->get();

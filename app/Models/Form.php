@@ -10,7 +10,8 @@ class Form extends Model
         'title',
         'description',
         'teacher_id',
-        'materia_id'
+        'materia_id',
+        'estado'
     ];
 
     public function questions()
@@ -19,7 +20,7 @@ class Form extends Model
     }
 
     public function materia(){
-        return $this->belongsTo(Materia::class, 'materia_id');
+        return $this->belongsTo(Materia::class, 'materia_id')->activa();
     }
 
     public function docente() {
@@ -29,6 +30,10 @@ class Form extends Model
     public function preguntas()
     {
         return $this->hasMany(Question::class, 'form_id');
+    }
+    public function scopeActiva($query)
+    {
+        return $query->where('estado', 1);
     }
 
     public function asignados()
