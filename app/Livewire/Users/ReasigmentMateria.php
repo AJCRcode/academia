@@ -28,6 +28,11 @@ class ReasigmentMateria extends Component
     {
         $this->user->materias()->attach($materia);
     }
+    public function next()
+    {
+        flash()->success('Usuario actualizado con exito');
+        return back()->withInput();
+    }
 
     public function removeMateria($materia){
         $this->user->materias()->detach($materia);

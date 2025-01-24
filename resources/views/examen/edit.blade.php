@@ -6,8 +6,6 @@
     </x-slot>
 
     <x-card>
-        {{$examen}}
-
         <livewire:examen.edit-form :formId="$examen"/>
     </x-card>
 

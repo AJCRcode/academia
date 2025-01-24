@@ -11,7 +11,6 @@
         </x-button_basic>
     </div>
 
-
     <div class="relative overflow-x-auto shadow-2xl sm:rounded-lg p-4 mt-4">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-base text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400 capitalize">
@@ -54,23 +53,24 @@
                                 </div>
                                 <div class="px-3 py-2 flex flex-row gap-1">
                                     <x-primary-button wire:click="selectExam({{ $exam->id }})" title="Asignar este examen" >
-                                        <svg xmlns="http://www.w3.org/2000/svg"  class="w-6 h-6 " fill="currentColor" viewBox="0 0 16 16">
-                                            <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 1.59 2.498C8 14 8 13 8 12.5a4.5 4.5 0 0 1 5.026-4.47zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471z"/>
-                                            <path d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0m-3.5-2a.5.5 0 0 0-.5.5v1h-1a.5.5 0 0 0 0 1h1v1a.5.5 0 0 0 1 0v-1h1a.5.5 0 0 0 0-1h-1v-1a.5.5 0 0 0-.5-.5"/>
+                                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                            <path fill-rule="evenodd" d="M12 6a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm-1.5 8a4 4 0 0 0-4 4 2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-3Zm6.82-3.096a5.51 5.51 0 0 0-2.797-6.293 3.5 3.5 0 1 1 2.796 6.292ZM19.5 18h.5a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-1.1a5.503 5.503 0 0 1-.471.762A5.998 5.998 0 0 1 19.5 18ZM4 7.5a3.5 3.5 0 0 1 5.477-2.889 5.5 5.5 0 0 0-2.796 6.293A3.501 3.501 0 0 1 4 7.5ZM7.1 12H6a4 4 0 0 0-4 4 2 2 0 0 0 2 2h.5a5.998 5.998 0 0 1 3.071-5.238A5.505 5.505 0 0 1 7.1 12Z" clip-rule="evenodd"/>
                                         </svg>
                                     </x-primary-button>
+
                                     <x-primary-button href="{{route('examen.show',$exam->id)}}" title="Probar este examen" wire:navigate>
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 " fill="currentColor" viewBox="0 0 16 16">
-                                            <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z"/>
-                                            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5zM10 8a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0zm4-3a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1"/>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16">
+                                            <path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm6.258-6.437a.5.5 0 0 1 .507.013l4 2.5a.5.5 0 0 1 0 .848l-4 2.5A.5.5 0 0 1 6 12V7a.5.5 0 0 1 .258-.437"/>
                                         </svg>
                                     </x-primary-button>
+
                                     <x-primary-button href="{{route('examen.edit',$exam->id)}}" title="Editar este examen" wire:navigate>
                                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 " fill="currentColor" viewBox="0 0 16 16">
                                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                             <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
                                         </svg>
                                     </x-primary-button>
+
                                     <form action="{{ route('examen.destroy', $exam->id) }}" method="POST">
                                         @csrf
                                         @method('delete')
@@ -98,7 +98,8 @@
                 <div
                     class="relative bg-white rounded-2xl shadow-[0px_0px_50px_20px] shadow-blue-700/50 dark:bg-gray-800 border-[2px] border-sky-300 px-4 pb-4">
                     <!-- Modal header -->
-                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                    <div class="flex items-center justify-between p-4 md:p-5 border-b-2 rounded-t dark:border-gray-600">
+                        <p class="font-medium text-xl text-gray-800 dark:text-gray-200 leading-tight ">Gestionar Examen: <span class="font-extrabold">{{ $selectedExam->title }}</span></p>
 
                         <button type="button" wire:click="close"
                                 class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white">
@@ -110,23 +111,26 @@
                             <span class="sr-only">Close modal</span>
                         </button>
                     </div>
-                    <div class="mt-6 p-4">
-                        <p class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight ">Gestionar Examen: {{ $selectedExam->title }}</p>
 
-                        <div class="grid grid-cols-2 pt-4">
+                    <div class="px-4 py-0.5">
 
-                            <!-- Editar Examen -->
-                            <div class="mb-4">
-                                <h3>Preguntas</h3>
-                                <br class="w-full h-1 mx-auto my-4 bg-slate-900 border-0 rounded md:my-10 dark:bg-gray-700">
+                        <div class="grid grid-cols-1 md:grid-cols-2 pt-2 gap-2">
+                            <div>
+                                <h3 class="font-medium mb-2">Lista de Preguntas</h3>
                                 @foreach ($selectedExam->questions as $question)
-                                    <div class="mb-2">
-                                        <strong>{{ $question->titulo }}</strong>
-                                        <ul>
-                                            @foreach ($question->options as $option)
-                                                <li>{{ $option->opcion }} (Correcta: {{ $option->es_correcta ? 'Sí' : 'No' }})</li>
-                                            @endforeach
-                                        </ul>
+                                    <div class="w-full max-w-sm bg-white border mb-2 border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                                        <div class="mb-2 px-4">
+                                            <p class="font-extrabold text-lg capitalize">{{ $question->titulo }}</p>
+                                            <ul class="flex flex-row gap-2 ">
+                                                @foreach ($question->options as $option)
+                                                    @if($option->es_correcta)
+                                                        <li class="bg-emerald-200 text-xs font-extralight rounded px-2 p-0.5 text-emerald-800">{{ $option->opcion }}</li>
+                                                    @else
+                                                        <li class="bg-red-200 text-xs font-extralight rounded px-2 py-0.5 text-red-800">{{ $option->opcion }}</li>
+                                                    @endif
+                                                @endforeach
+                                            </ul>
+                                        </div>
                                     </div>
                                 @endforeach
                             </div>

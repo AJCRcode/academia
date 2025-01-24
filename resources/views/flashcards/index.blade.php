@@ -10,5 +10,24 @@
     <x-card>
         <livewire:card.cards-view/>
     </x-card>
+    @push('js')
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                // Escucha el evento para cambiar de tarjeta
+                window.addEventListener('change-card', (event) => {
+                    const animation = event;
+                    console.log(`Animación aplicada al cambiar de tarjeta: ${animation}`);
+                    // Aquí puedes agregar lógica personalizada para manejar la animación si es necesario.
+                });
+
+                // Escucha el evento para cerrar el modal
+                window.addEventListener('close-modal', (event) => {
+                    const animation = event.detail;
+                    console.log(`Animación aplicada al cerrar el modal: ${animation}`);
+                    // Aquí puedes agregar lógica personalizada para manejar el cierre del modal.
+                });
+            });
+        </script>
+    @endpush
 
 </x-app-layout>

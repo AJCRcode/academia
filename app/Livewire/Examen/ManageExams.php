@@ -57,7 +57,7 @@ class ManageExams extends Component
             ]);
         }
 
-        session()->flash('message', 'Estudiantes asignados correctamente.');
+        flash()->success('Estudiantes asignados correctamente.');
     }
 
     public function close()
