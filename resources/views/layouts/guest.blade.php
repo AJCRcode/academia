@@ -16,7 +16,7 @@
     </head>
     <body class="font-sans text-gray-900 antialiased">
         <div class=" grid grid-cols-1 sm:grid-cols-2 h-screen sm:justify-center items-center pt-6 sm:pt-0 bg-[url('https://amarmedi.amarmedi.com/images/aula.png')] bg-cover backdrop-blur-sm bg-white/30  dark:bg-gray-900">
-            <div>
+            <div class="hidden md:block">
                 <a href="/" wire:navigate>
                     <x-application-logo class="w-4/5 h-auto fill-current text-gray-500 mx-auto" />
                 </a>

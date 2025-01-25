@@ -14,7 +14,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="antialiased font-sans">
-        <section class="animate__animated animate__bounce bg-center bg-no-repeat bg-[url('https://amarmedi.amarmedi.com/images/fondo.png')] bg-[#4D86A3] bg-cover bg-blend-multiply">
+        <section class="animate__animated animate__bounce bg-center bg-no-repeat bg-[url('https://amarmedi.amarmedi.com/images/fondo.jpeg')] bg-[#4D86A3] bg-cover bg-blend-multiply">
             <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-24">
 
                 <img class="h-auto w-2/6 mx-auto rounded-lg shadow-emerald-900" src="{{asset('images/academia.png')}}" alt="image description">
@@ -26,7 +26,7 @@
             </div>
         </section>
 
-        <section class="px-60 bg-[url('https://amarmedi.amarmedi.com/images/patron_medi.jpeg')]">
+        <section class="lg:px-60 px-6 pt-6 lg:pt-0 bg-[url('https://amarmedi.amarmedi.com/images/patron_medi.jpeg')]">
 
             <div class=" mx-auto max-w-screen-xl lg:py-16">
                 <x-principalcard iscategory="{{true}}">
