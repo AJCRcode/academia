@@ -8,50 +8,74 @@ use Livewire\Component;
 
 class TakeExam extends Component
 {
-    public $form; // El examen
+    public $form; // Datos del examen
     public $responses = []; // Respuestas del estudiante
     public $result = null; // Resultado del examen
 
+    /**
+     * Inicializa el componente con el formulario y prepara las respuestas.
+     */
     public function mount($formId)
     {
-        // Carga el formulario con sus preguntas y opciones
+        // Cargar el formulario con preguntas y opciones
         $this->form = Form::with('questions.options')->findOrFail($formId);
 
-        // Inicializa las respuestas según el tipo de pregunta
-        foreach ($this->form->questions as $question) {
-            if ($question->tipo === 'checkbox') {
-                $this->responses[$question->id] = [];
-            } else {
-                $this->responses[$question->id] = null;
-            }
-        }
+        // Inicializar respuestas para todas las preguntas
+        $this->responses = $this->form->questions->mapWithKeys(function ($question) {
+            return [$question->id => $question->tipo === 'checkbox' ? [] : null];
+        })->toArray();
     }
 
+    /**
+     * Envía las respuestas y calcula el resultado.
+     */
     public function submit()
     {
-        // Validar respuestas
-        foreach ($this->form->questions as $question) {
-            if ($question->tipo === 'checkbox') {
-                if (empty($this->responses[$question->id])) {
-                    $this->addError("responses.$question->id", "Por favor selecciona al menos una opción.");
-                }
-            } else {
-                if (is_null($this->responses[$question->id])) {
-                    $this->addError("responses.$question->id", "Por favor responde esta pregunta.");
-                }
-            }
-        }
+        // Limpiar errores previos antes de validar
+        $this->resetValidation();
 
+        // Validar las respuestas
+        $this->validateResponses();
+
+        // Si hay errores, detener el flujo
         if ($this->getErrorBag()->isNotEmpty()) {
             return;
         }
 
+        // Guardar respuestas del estudiante
+        $this->saveResponses();
 
-        // Guardar las respuestas del estudiante
+        // Calcular resultado del examen
+        $this->calculateResult();
+    }
+
+    /**
+     * Valida las respuestas según el tipo de pregunta.
+     */
+    private function validateResponses()
+    {
+        foreach ($this->form->questions as $question) {
+            if ($question->tipo === 'checkbox') {
+                if (empty($this->responses[$question->id])) {
+                    $this->addError("responses.{$question->id}", "Por favor selecciona al menos una opción.");
+                }
+            } else {
+                if (is_null($this->responses[$question->id])) {
+                    $this->addError("responses.{$question->id}", "Por favor responde esta pregunta.");
+                }
+            }
+        }
+    }
+
+    /**
+     * Guarda las respuestas del estudiante en la base de datos.
+     */
+    private function saveResponses()
+    {
         foreach ($this->responses as $questionId => $response) {
             if (is_array($response)) {
-                // Si es una selección múltiple (checkbox)
-                foreach ($this->chekOptions($response) as $optionId) {
+                // Para preguntas de selección múltiple (checkbox)
+                foreach ($this->getSelectedOptions($response) as $optionId) {
                     Answer::create([
                         'question_id' => $questionId,
                         'student_id' => auth()->id(),
@@ -59,7 +83,7 @@ class TakeExam extends Component
                     ]);
                 }
             } else {
-                // Si es una única respuesta (radio o texto)
+                // Para respuestas únicas (radio o texto)
                 Answer::create([
                     'question_id' => $questionId,
                     'student_id' => auth()->id(),
@@ -67,49 +91,45 @@ class TakeExam extends Component
                 ]);
             }
         }
-
-        // Calcular el resultado
-        $this->calculateResult();
     }
 
-    private function chekOptions($options)
+    /**
+     * Retorna los IDs de opciones seleccionadas en una pregunta.
+     */
+    private function getSelectedOptions($options)
     {
-        $optionsreturn = [];
-        foreach ($options as $optionId => $isSelected) {
-            if ($isSelected) {
-                $optionsreturn[] = $optionId;
-            }
-        }
-        return $optionsreturn;
+        return array_keys(array_filter($options));
     }
 
+    /**
+     * Calcula el resultado del examen.
+     */
     private function calculateResult()
     {
         $correctAnswers = 0;
         $totalQuestions = count($this->form->questions);
 
         foreach ($this->form->questions as $question) {
+            $isCorrect = false;
+
             if ($question->tipo === 'checkbox') {
-                // Verificar todas las respuestas correctas seleccionadas
+                // Validar selección múltiple
                 $correctOptions = $question->options->where('es_correcta', true)->pluck('id')->toArray();
-                $selectedOptions = $this->chekOptions($this->responses[$question->id]) ?? [];
+                $selectedOptions = $this->getSelectedOptions($this->responses[$question->id]);
 
-                if (count(array_diff($correctOptions, $selectedOptions)) === 0 && count(array_diff($selectedOptions, $correctOptions)) === 0) {
-                    $correctAnswers++;
-                }
+                $isCorrect = $this->areArraysEqual($correctOptions, $selectedOptions);
             } elseif ($question->tipo === 'radio') {
-                // Verificar si la única respuesta es correcta
+                // Validar selección única
                 $correctOption = $question->options->firstWhere('es_correcta', true);
-                if ($correctOption && $this->responses[$question->id] == $correctOption->id) {
-                    $correctAnswers++;
-                }
+                $isCorrect = $correctOption && $this->responses[$question->id] == $correctOption->id;
             } elseif ($question->tipo === 'text') {
-                // Verificar si la respuesta es correcta
+                // Validar texto
                 $correctAnswer = $question->options->firstWhere('es_correcta', true);
+                $isCorrect = $correctAnswer && $this->responses[$question->id] === $correctAnswer->opcion;
+            }
 
-                if ($correctAnswer->opcion && $this->responses[$question->id] == $correctAnswer->opcion) {
-                    $correctAnswers++;
-                }
+            if ($isCorrect) {
+                $correctAnswers++;
             }
         }
 
@@ -120,11 +140,25 @@ class TakeExam extends Component
         ];
     }
 
+    /**
+     * Compara dos arrays para verificar si son iguales.
+     */
+    private function areArraysEqual($array1, $array2)
+    {
+        return empty(array_diff($array1, $array2)) && empty(array_diff($array2, $array1));
+    }
+
+    /**
+     * Cierra el resultado del examen.
+     */
     public function close()
     {
         $this->result = null;
     }
 
+    /**
+     * Renderiza la vista del componente.
+     */
     public function render()
     {
         return view('livewire.examen.take-exam');

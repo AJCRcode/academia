@@ -34,6 +34,8 @@ class Card extends Component
 
         $this->dispatch('change-card', ['animation' => $this->animation]);
 
+        $this->isQuestion = true;
+
         $this->updateCardData($nextFlashcard);
         $this->animation = 'animate__fadeIn';
     }
