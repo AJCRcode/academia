@@ -1,12 +1,11 @@
 <?php
 
-// app/Http/Controllers/FlashcardController.php
-// app/Http/Controllers/FlashcardController.php
 namespace App\Http\Controllers;
 
 use App\Models\Flashcard;
 use App\Models\Materia;
 use Illuminate\Http\Request;
+use Livewire\Component;
 
 class FlashcardController extends Controller
 {
@@ -56,7 +55,13 @@ class FlashcardController extends Controller
 
     public function destroy(Flashcard $flashcard)
     {
-        $flashcard->delete();
-        return redirect()->route('flashcards.index', $flashcard->materia)->with('success', 'Flashcard eliminada.');
+        $flashcard->estado = false;
+        if ($flashcard->save()) {
+            flash()->success('Eliminado Correctamente');
+            return back();
+        }
+
+        toastr()->error('Hubo un Error al eliminar');
+        return back();
     }
 }

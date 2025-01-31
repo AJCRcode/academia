@@ -58,7 +58,7 @@ class Materia extends Model
 
     public function flashcards()
     {
-        return $this->hasMany(Flashcard::class);
+        return $this->hasMany(Flashcard::class)->activa();
     }
 
     public function scopeActiva($query)

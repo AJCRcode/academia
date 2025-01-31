@@ -21,4 +21,8 @@ class Flashcard extends Model
     {
         return $this->belongsTo(Materia::class)->activa();
     }
+    public function scopeActiva($query)
+    {
+        return $query->where('estado', 1);
+    }
 }
